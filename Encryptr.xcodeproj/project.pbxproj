@@ -126,6 +126,7 @@
 				TargetAttributes = {
 					E4C3BF471EAE0D1A007A90F4 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = NPG48TJBC5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -342,6 +343,7 @@
 			baseConfigurationReference = 7E6F37AD689C2FC125618296 /* Pods-Encryptr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NPG48TJBC5;
 				INFOPLIST_FILE = Encryptr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sheivin.Encryptr;
@@ -355,6 +357,7 @@
 			baseConfigurationReference = 289C3640AC3777E7559AFD29 /* Pods-Encryptr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NPG48TJBC5;
 				INFOPLIST_FILE = Encryptr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sheivin.Encryptr;

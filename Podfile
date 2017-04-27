@@ -6,5 +6,6 @@ target 'Encryptr' do
   use_frameworks!
 
   # Pods for Encryptr
+  pod 'Firebase/Core'
 
 end
