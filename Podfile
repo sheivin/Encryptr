@@ -7,5 +7,6 @@ target 'Encryptr' do
 
   # Pods for Encryptr
   pod 'Firebase/Core'
+  pod 'Firebase/Storage'
 
 end

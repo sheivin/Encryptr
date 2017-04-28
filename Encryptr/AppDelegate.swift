@@ -18,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        
+        let localFile = UIImage(named: "2.jpg")
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        let riversRef = storageRef.child("images/rivers.jpg")
+        let uploadTask = riversRef.put(UIImageJPEGRepresentation(localFile!, 0.8)!, metadata: nil) { metadata, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print(error)
+            } else {
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                let downloadURL = metadata!.downloadURL()
+                print("hello")
+            }
+        }
         return true
     }
 
