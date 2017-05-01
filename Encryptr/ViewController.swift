@@ -40,6 +40,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         self.dismiss(animated: true, completion: nil)
