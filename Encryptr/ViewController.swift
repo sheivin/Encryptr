@@ -8,9 +8,10 @@
 
 import UIKit
 import MobileCoreServices
+import LocalAuthentication
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     var newMedia: Bool?
@@ -40,8 +41,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
         self.dismiss(animated: true, completion: nil)
@@ -51,6 +50,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, #selector(ViewController.image(image:didFinishSavingWithError:contextInfo:)), nil)
             }
+        }
+        var context:LAContext = LAContext();
+        var error:NSError?
+        var success:Bool;
+        var reason:String = "Please authenticate using TouchID to Decrypt";
+        
+        if (context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &error))
+        {
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply: { (success, error) -> Void in
+                if (success) {
+                    print("Auth was OK");
+                    let alert = UIAlertController(title: "Secret Message", message: "Fake Decrypt message here", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                else
+                {
+                    //You should do better handling of error here but I'm being lazy
+                    print("Error received: %d", error!);
+                }
+            });
         }
     }
     
@@ -71,12 +91,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
-
